@@ -48,10 +48,6 @@ function handleChangeImage(image) {
   const currentThumbElement = document.querySelector(`.thumb-${imageData.productId}`);
   imageElement.src = imageData.imageUrl;
 
-  console.log(imageData.productId);
-  console.log(prevThumbElement);
-  console.log(currentThumbElement);
-
   if (currentThumbElement.src === imageElement.src) {
     currentThumbElement.className = `active-thumb-${imageData.productId}`;
     prevThumbElement.className = `thumb-${imageData.productId}`;
@@ -98,7 +94,6 @@ getData(url).then(data => {
       document.querySelector('.images-showcase').insertAdjacentHTML('afterbegin', `
         <img src="${image.imageUrl}" alt="${image.imageText}" onclick="handleChangeImage('${encodeURIComponent(JSON.stringify({...image, productId: item.productId}))}')" class="${image.imageUrl === productImages[0].imageUrl ? `active-thumb-${item.productId}` : `thumb-${item.productId}`}" />
       `);
-
     });
   });
 });
